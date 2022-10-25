@@ -2,9 +2,10 @@ import { MeshReflectorMaterial, Float, Html, Text, OrbitControls, TransformContr
 import { useRef } from 'react'
 import './Experience.css'
 
-export default function Experience() {
+import Cube from './cube.jsx'
 
-    const cubeRef = useRef()
+export default function Experience() {
+    
     const sphereRef = useRef()
 
     return <>
@@ -14,12 +15,7 @@ export default function Experience() {
         <directionalLight position={ [1, 2, 3] } intensity={ 1.5 } />
         <ambientLight intensity={ 0.5 } />
 
-        <mesh ref={ cubeRef } position={ [2, 0, 0] } rotation-x={ 0.0 } scale={ 1 }>
-            <boxGeometry />
-            <meshStandardMaterial color={ 'blue' } wireframe={ false } />
-            <Html wrapperClass='label' center>Box</Html>
-        </mesh>
-        <TransformControls object={ cubeRef } mode='translate' />
+        <Cube scale={ 2 } />
 
         <PivotControls
             anchor={ [0, 0, 0] /* Anchor Relative to bounding Box */ }
@@ -37,7 +33,7 @@ export default function Experience() {
                     wrapperClass='label'
                     center
                     distanceFactor={ 8 }
-                    occlude={ [sphereRef, cubeRef] }
+                    occlude={ [sphereRef] }
                 >
                     Sphere 🏀
                 </Html>
@@ -53,7 +49,7 @@ export default function Experience() {
                 mixBlur={ 1 }
                 mirror={ 0.5 }
                 color='grey'
-                 />
+            />
         </mesh>
 
         <Float intensity={ 10 } speed={ 5 }>
