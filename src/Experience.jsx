@@ -1,4 +1,4 @@
-import { Html, OrbitControls, TransformControls, PivotControls } from '@react-three/drei'
+import { MeshReflectorMaterial, Float, Html, Text, OrbitControls, TransformControls, PivotControls } from '@react-three/drei'
 import { useRef } from 'react'
 import './Experience.css'
 
@@ -16,7 +16,7 @@ export default function Experience() {
 
         <mesh ref={ cubeRef } position={ [2, 0, 0] } rotation-x={ 0.0 } scale={ 1 }>
             <boxGeometry />
-            <meshStandardMaterial color={ 'mediumpurple' } wireframe={ false } />
+            <meshStandardMaterial color={ 'blue' } wireframe={ false } />
             <Html wrapperClass='label' center>Box</Html>
         </mesh>
         <TransformControls object={ cubeRef } mode='translate' />
@@ -31,7 +31,7 @@ export default function Experience() {
         >
             <mesh ref={ sphereRef } position={ [-3, 0, 0] } rotation-x={ 0.0 } scale={ 2 }>
                 <sphereGeometry args={ [.5, 32, 32] } />
-                <meshStandardMaterial color={ 'orange' } wireframe={ false } />
+                <meshStandardMaterial color={ 'red' } wireframe={ false } />
                 <Html
                     position={ [0, 0, .6] }
                     wrapperClass='label'
@@ -46,9 +46,27 @@ export default function Experience() {
 
         <mesh position-y={ -1 } scale={ 20 } rotation={ [-Math.PI * .5, 0, 0] }>
             <planeGeometry />
-            <meshBasicMaterial color={ 'greenyellow' } />
+            {/* <meshBasicMaterial color={ 'green' } /> */ }
+            <MeshReflectorMaterial
+                resolution={ 512 }
+                blur={ [1000, 1000] }
+                mixBlur={ 1 }
+                mirror={ 0.5 }
+                color='grey'
+                 />
         </mesh>
 
+        <Float intensity={ 10 } speed={ 5 }>
+            <Text
+                font='./CaskaydiaCove.woff'
+                scale={ [3, 3, 3] }
+                color='green'
+                position={ [0, 2, 0] }
+                maxWidth={ 1 }
+                textAlign='center'
+            >React Three  Fiber Drei Helpers
+            </Text>
+        </Float>
 
     </>
 }
