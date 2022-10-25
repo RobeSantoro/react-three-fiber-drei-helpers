@@ -10,6 +10,8 @@
   "dependencies": {
     "@react-three/drei": "^9.37.1",
     "@react-three/fiber": "^8.8.10",
+    "leva": "^0.9.32",
+    "r3f-perf": "^6.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "three": "^0.145.0"
